@@ -1,0 +1,48 @@
+body {
+	background-color: 	#cccccc;
+}
+
+.row{
+	background-color: white;
+	border-radius: 5px;
+  padding-left: 10px; 
+
+}
+
+.over-text{
+	position: absolute;
+	bottom: 8px;
+	left: 16px;
+}
+
+h1 {
+	padding: 20px;
+}
+
+.uploader {
+	display: block;
+	padding:4px 2px;
+	width:70px;
+	margin:2px 0 20px 10px;
+}
+
+.jumbotron {
+	padding: 10px;
+	margin:0px;
+}
+
+#header {
+	font-size: 50px;
+}
+
+#title {
+
+}
+
+#text {
+	font-size: 20px;
+}
+
+#subtext {
+
+}
