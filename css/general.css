@@ -48,3 +48,14 @@ h1 {
 }
 
 
+#width, #height {
+	 -moz-appearance:textfield;
+}
+
+#width::-webkit-inner-spin-button,
+#width::-webkit-outer-spin-button,
+#height::-webkit-inner-spin-button,
+#height::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
