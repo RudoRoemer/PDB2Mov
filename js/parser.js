@@ -21,14 +21,46 @@
     }
 }(jQuery));
 
-var multi = false;
+var multiple = false;
+var combi = false;
+var waters = false;
+var threed = false;
+var confs = 0;
+var freq = 0;
+var step = 0;
+var dstep = 0;
+var email = "";
+var tos = false;
+
+function submit() {
+
+}
 
 function checks() {
-	if($("#threed"). prop("checked") == true) {
-		console.log("true");
-	} else {
-		console.log("false");
-	}
+
+	combi = $("#combi").prop("checked");
+	multiple = $("#multiple").prop("checked");
+	waters = $("#waters").prop("checked");
+	threed = $("#threed").prop("checked");
+
+	confs = $("#confs").val();
+	feq = $("freq").val();
+	step = $("step").val();
+	dstep = $("dstep").val();
+
+	email = $("#email").val();
+	console.log(email);
+	tos = $("#tos").prop("checked");
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function tosClick() {
+	tos = $("#tos").prop("checked");
+	$("#process").prop("disabled", !tos);
 }
 
 function test() {
@@ -38,5 +70,13 @@ function test() {
 
 function fadeOut() {
 	$('#foo').fadeOut();
+}
+function fadeIn() { 
 	$('#foo').fadeIn();
+}
+
+if ($("#tos").prop("checked") == false) {
+	$("#process").prop("disabled", true);
+}  else {
+	$("#process").prop("disabled", false);
 }
