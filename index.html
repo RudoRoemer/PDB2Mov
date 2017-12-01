@@ -46,7 +46,7 @@
 			    	</div>
 			    	<div class="col-sm-6 col-md-6 col-lg-6">
 			    		Number of configurations to be calculated:
-				  		<input style="display: inline; float: right; width: 75px" value="0" step="1" type="number" class="form-control" id="confs">
+				  		<input style="display: inline; float: right; width: 75px" value="1" step="1" type="number" class="form-control" id="confs">
 				  		<p>
 			    	</div>
 			    </div>
@@ -58,7 +58,7 @@
 			    	</div>
 			    	<div class="col-sm-6 col-md-6 col-lg-6">
 			    		Frequences of saving intermediate configuration:
-				 			<input style="display: inline; float: right; width: 75px" value="0" step="1" type="number" class="form-control" id="freq">
+				 			<input style="display: inline; float: right; width: 75px" value="1" step="1" type="number" class="form-control" id="freq">
 				  		<p>
 			    	</div>
 			    </div>
@@ -95,10 +95,10 @@
 		  					data-toggle="tooltip" 
 		  					data-placement="riht"
 		  					data-html="true"
-		  					title="list the molecules that you wish to keep in the structure&#013;&#013;Format ex: CZ  NE NH1&#013;&#013;(Default none)">
+		  					title="list the molecules that you wish to keep in the structure&#013;&#013;Format ex: CZA NE2 NH1&#013;&#013;(Default none)">
 			  				<strong>I</strong>
 			  			</button>
-			  			<input type="text" style="width:70%; float:right; display: inline-block;" class="form-control" id="usr">
+			  			<input type="text" style="width:70%; float:right; display: inline-block;" class="form-control" id="mol-list">
 			  		</div>
 			  		<div class="container">
 			  			<p>Movement modes to investigate:
@@ -111,7 +111,7 @@
 		  					title="select the modes you wish to process&#013;&#013;Format ex: 12 13 14 &#013;&#013;(Default 7 8 9 10 11)">
 			  				<strong>I</strong>
 			  			</button>
-			  			<input type="text" style="width:70%; float:right; display: inline-block;" class="form-control" id="usr">
+			  			<input type="text" style="width:70%; float:right; display: inline-block;" class="form-control" id="modes-list">
 			  		</div>
 			  		<div class="container">
 			  			<p>Energy cutoff Values:
@@ -124,27 +124,21 @@
 		  					title="select energy cutoff values you wish to calculate&#013;&#013;Format ex: 1.0 2.0 3.0 4.0 &#013;&#013;(Default 1.0 2.0)">
 			  				<strong>I</strong>
 			  			</button>
-			  			<input type="text" style="width:70%; float:right; display: inline-block;" class="form-control" id="usr">
+			  			<input type="text" style="width:70%; float:right; display: inline-block;" class="form-control" id="cutoff-list">
 			  		</div>
 			  	</div>
 				  <div class="form-group">
 						<label for="usr">email address:</label>
 						<input type="text" class="form-control" id="email">
-
-						<a id="popoverData" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover">Popover with data-trigger</a>
-
-    				<a id="popoverOption" class="btn" href="#" data-content="Popup with option trigger" rel="popover" data-placement="bottom" data-original-title="Title">Popup with option trigger</a>
-
 					</div>
 					<p>
 					<div class="checkbox"> 
 			    	<label><input type="checkbox" value="" id="tos" onclick="tosClick()"> I agree to the <a href="tos.html">Terms of Service</a>, acknowledging that I am using this for purely academic purposes. </label>
 			  	</div>
 			  	<p>
-					<input type="button" value="Process" name="submit" onclick="submit()" id="process" disabled="true">
+					<input type="button" value="Process" name="submit" onclick="check()" id="process" disabled="true">
 				</form>
 			</div>
 		</div>
 	</body>
-	<script src="js/parser.js"></script> 
 </html>`

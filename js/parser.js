@@ -27,30 +27,70 @@ var waters = false;
 var threed = false;
 var confs = 0;
 var freq = 0;
-var step = 0;
-var dstep = 0;
+var step = 0.0;
+var dstep = 0.0;
 var email = "";
 var tos = false;
+var molList;
+var modList;
+var cutList;
 
-function submit() {
-    checks();
-}
+var err = "";
 
-function checks() {
-
-	combi = $("#combi").prop("checked");
+function check() {
+  combi = $("#combi").prop("checked");
 	multiple = $("#multiple").prop("checked");
 	waters = $("#waters").prop("checked");
 	threed = $("#threed").prop("checked");
-
-	confs = $("#confs").val();
-	feq = $("freq").val();
-	step = $("step").val();
-	dstep = $("dstep").val();
-
+	confs = parseInt($("#confs").val());
+	freq = parseInt($("#freq").val());
+	step = parseFloat($("#step").val());
+	dstep = parseFloat($("#dstep").val());
 	email = $("#email").val();
-	console.log(email);
 	tos = $("#tos").prop("checked");
+
+	
+	if (isNaN(confs) 
+		|| isNaN(freq) 
+		|| isNaN(step) 
+		|| isNaN(dstep)) {
+		err = "One or more inputs are invalid.";
+	}
+
+	if (regEx($("#mol-list").val(), "^([A-Z0-9][A-Z0-9]?[A-Z0-9]?( ?))+$")) {
+		molList = $("#mol-list").val().split(" ");
+		console.log(molList);
+	} else {
+		err = "Format of molecule list is incorrect.";
+	}
+
+	if (regEx($("#modes-list").val(), "^(([0-9])([0-9]?)( ?))+$")) {
+		
+		modList = $("#modes-list").val().split(" ");
+		console.log(modList);
+	} else {
+		err = "Format of modes to calculate is incorrect.";
+	}
+
+	if (regEx($("#cutoff-list").val(), "^([0-9].(0|5) ?)+$")) {
+		cutList = $("#cutoff-list").val().split(" ");
+	} else {
+		cutList = $("#cutoff-list").val().split(" ");
+		err = "Format of cutoff value list is incorrect.";
+	}
+
+	if (!validateEmail(email)) {
+		err = "Invalid email.";
+	}
+
+	if (tos == false) {
+		err = "Stop messing with my JavaScript."
+	}
+}
+	
+function regEx(subj, exp) {
+	var re = new RegExp(exp);
+	return re.test(subj);
 }
 
 function validateEmail(email) {
@@ -61,11 +101,6 @@ function validateEmail(email) {
 function tosClick() {
 	tos = $("#tos").prop("checked");
 	$("#process").prop("disabled", !tos);
-}
-
-function test() {
-	$().button('toggle');
-	console.log("test");
 }
 
 function fadeOut() {
