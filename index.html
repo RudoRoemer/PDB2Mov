@@ -8,7 +8,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/general.css">
-		<script src="js/parser.js"></script>
 	</head>
 	<body>
 		<div class="header-image">
@@ -27,7 +26,7 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida vel justo eget auctor. Ut bibendum ac mi iaculis vulputate. Cras mattis, ligula eu faucibus ullamcorper, mauris arcu efficitur lacus, ac suscipit massa odio quis massa. Sed lobortis molestie tortor quis iaculis. Sed aliquam ligula in libero hendrerit luctus. Donec volutpat congue dolor, id pharetra eros ornare nec. In sed justo eleifend, bibendum velit eget, rhoncus eros. Ut vel bibendum dolor, eget iaculis metus. Pellentesque mollis mauris id dignissim iaculis. Cras vel mattis nunc, sed aliquet enim. Etiam sit amet viverra ipsum, interdum ultricies lacus. Fusce vitae turpis iaculis, congue purus tristique, euismod nunc. Ut sem est, vestibulum id pretium sit amet, convallis non augue. Donec faucibus vulputate aliquet. Sed aliquam vitae libero sit amet tempor.
 			<h2>Submit a PDB File and Parameters</h2>
 			<div class="container-fluid" id="foo">
-				<form action="index.php" method="post" id="toSend">
+				<form action="php/index.php" method="post" id="toSend">
 			    Or select PDB File:
 			    <input type="file" name="pdbFile" id="pdbFile" accept=".pdb" style="display: block;">
 			    <p style="margin-top: 20px;">
@@ -136,9 +135,10 @@
 			    	<label><input type="checkbox" value="" id="tos" onclick="tosClick()"> I agree to the <a href="tos.html">Terms of Service</a>, acknowledging that I am using this for purely academic purposes. </label>
 			  	</div>
 			  	<p>
-					<input type="button" value="Process" name="submit" onclick="check()" id="process" disabled="true">
+					<input type="submit" value="Process" name="submit" id="process" disabled="true">
 				</form>
 			</div>
 		</div>
 	</body>
+	<script src="js/parser.js"></script>
 </html>`

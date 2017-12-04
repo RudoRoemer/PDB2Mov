@@ -31,11 +31,13 @@ var step = 0.0;
 var dstep = 0.0;
 var email = "";
 var tos = false;
-var molList;
-var modList;
-var cutList;
+var molList = "";
+var modList = "";
+var cutList = "";
 
 var err = "";
+
+var params;
 
 function check() {
   combi = $("#combi").prop("checked");
@@ -58,24 +60,22 @@ function check() {
 	}
 
 	if (regEx($("#mol-list").val(), "^([A-Z0-9][A-Z0-9]?[A-Z0-9]?( ?))+$")) {
-		molList = $("#mol-list").val().split(" ");
+		molList = $("#mol-list").val();
 		console.log(molList);
-	} else {
+	} else if (!$("#mol-list").val() == "") {
 		err = "Format of molecule list is incorrect.";
 	}
 
 	if (regEx($("#modes-list").val(), "^(([0-9])([0-9]?)( ?))+$")) {
 		
-		modList = $("#modes-list").val().split(" ");
-		console.log(modList);
-	} else {
+		modList = $("#modes-list").val();
+	} else if (!$("#modes-list").val() == "") {
 		err = "Format of modes to calculate is incorrect.";
 	}
 
 	if (regEx($("#cutoff-list").val(), "^([0-9].(0|5) ?)+$")) {
-		cutList = $("#cutoff-list").val().split(" ");
-	} else {
-		cutList = $("#cutoff-list").val().split(" ");
+		cutList = $("#cutoff-list").val();
+	} else if (!$("#cutoff-list").val() == "") {
 		err = "Format of cutoff value list is incorrect.";
 	}
 
@@ -86,7 +86,57 @@ function check() {
 	if (tos == false) {
 		err = "Stop messing with my JavaScript."
 	}
+
+	console.log("KSDKFSDK");
+	params = 
+		{	"combi" 		: combi, 
+			"multiple" 	: multiple, 
+			"waters" 		: waters,
+			"threed" 		: threed,
+			"confs" 		: confs,
+			"freq" 			: freq,
+			"step"			: step,
+			"dstep" 		: dstep,
+			"email" 		: email,
+			"tos" 			: tos,
+			"molList"		: molList,
+			"modList" 	: modList,
+			"cutList" 	: cutList 
+		};
+
 }
+
+var form = document.querySelector("form");
+
+form.addEventListener("submit", function (e) {
+
+	check();
+  var fData = new FormData(this);
+
+  // Optional. Append custom data.
+  console.log(params);
+	$.each(params, function(key, value){
+	  fData.append(key, value);
+	})
+
+  console.log(fData);
+  $.ajax({
+    url: window.location.pathname + "php/index.php",
+    type: 'POST',
+    data: fData,
+    async: false,
+    success: function (data) {
+    	alert(data)
+    },
+    cache: false,
+    contentType: false,
+    processData: false
+	});
+
+  // Prevents the standard submit event
+  e.preventDefault();
+  return false;
+}, false);
 	
 function regEx(subj, exp) {
 	var re = new RegExp(exp);
@@ -94,8 +144,8 @@ function regEx(subj, exp) {
 }
 
 function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 }
 
 function tosClick() {
