@@ -61,7 +61,6 @@ function check() {
 
 	if (regEx($("#mol-list").val(), "^([A-Z0-9][A-Z0-9]?[A-Z0-9]?( ?))+$")) {
 		molList = $("#mol-list").val();
-		console.log(molList);
 	} else if (!$("#mol-list").val() == "") {
 		err = "Format of molecule list is incorrect.";
 	}
@@ -87,7 +86,6 @@ function check() {
 		err = "Stop messing with my JavaScript."
 	}
 
-	console.log("KSDKFSDK");
 	params = 
 		{	"combi" 		: combi, 
 			"multiple" 	: multiple, 
@@ -114,12 +112,10 @@ form.addEventListener("submit", function (e) {
   var fData = new FormData(this);
 
   // Optional. Append custom data.
-  console.log(params);
 	$.each(params, function(key, value){
 	  fData.append(key, value);
 	})
-
-  console.log(fData);
+	
   $.ajax({
     url: window.location.pathname + "php/index.php",
     type: 'POST',
